@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-do-wrapper/node_modules/do-wrapper/dist/do-wrapper.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-do-wrapper">npmtest-do-wrapper (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-do-wrapper/node_modules/do-wrapper/dist/do-wrapper.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">9.52% <small>(14 / 147)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">3.52% <small>(10 / 284)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">6.94% <small>(5 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">100% <small>(1 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-do-wrapper/node_modules/do-wrapper/dist/</a> &#187; do-wrapper.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2</td><td class="line-coverage"><span class="cline-any cline-yes">65</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";function _interopRequireDefault(e){return e&amp;&amp;e.__esModule?<span class="branch-0 cbranch-no" title="branch not covered" >e:</span>{"default":e}}<span class="fstat-no" title="function not covered" >function _classCallCheck(e,t){<span class="cstat-no" title="statement not covered" ></span>if(!(e instanceof t))<span class="cstat-no" title="statement not covered" >throw new TypeError("Cannot call a class as a function")}</span></span>Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var n=0;n&lt;t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&amp;&amp;(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&amp;&amp;e(t.prototype,n),a&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered" >e(t,a),</span>t}}(),_requestHelper=require("./request-helper"),_requestHelper2=_interopRequireDefault(_requestHelper),DigitalOcean=function(){<span class="fstat-no" title="function not covered" >function e(t,n){<span class="cstat-no" title="statement not covered" ></span>_classCallCheck(this,e),this.per_page=n,this.requestHelper=new _requestHelper2["default"](t)}</span>return _createClass(e,[{key:"account",value:<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t={actionPath:"account"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(t,e)}</span>},{key:"accountGetActions",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"actions",key:"actions",qs:{tag_name:e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"accountGetAction",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"actions/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"accountGetKeys",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"account/keys",key:"ssh_keys",qs:{tag_name:e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"accountAddKey",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"account/keys",method:"POST",body:e};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"accountGetKeyById",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"account/keys/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"accountGetKeyByFingerprint",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"account/keys/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"accountRenameKey",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"account/keys/"+encodeURIComponent(e),method:"PUT",body:{name:t}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"accountDeleteKey",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"account/keys/"+encodeURIComponent(e),method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"dropletsGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"droplets",key:"droplets",qs:{tag_name:e.tag_name||void 0,per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"dropletsGetKernels",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets/"+encodeURIComponent(e)+"/kernels",key:"kernels",qs:{tag_name:t?t.tag_name||"":"",per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"dropletsGetSnapshots",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets/"+encodeURIComponent(e)+"/snapshots",key:"snapshots",qs:{tag_name:t?t.tag_name||"":"",per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"dropletsGetBackups",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets/"+encodeURIComponent(e)+"/backups",key:"backups",qs:{tag_name:t?t.tag_name||"":"",per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"dropletsGetActions",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets/"+encodeURIComponent(e)+"/actions",key:"actions",qs:{tag_name:t?t.tag_name||"":"",per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"dropletsCreate",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"droplets",method:"POST",body:e};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"dropletsGetById",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"droplets/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"dropletsDelete",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"droplets/"+encodeURIComponent(e),method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"dropletsGetNeighbors",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"droplets/"+encodeURIComponent(e)+"/neighbors"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"dropletsGetNeighborsReport",value:<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t={actionPath:"reports/droplet_neighbors"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(t,e)}</span>},{key:"dropletsGetUpgrades",value:<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t={actionPath:"droplet_upgrades"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(t,e)}</span>},{key:"dropletsRequestAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets/"+encodeURIComponent(e)+"/actions",method:"POST",body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"dropletsGetAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets/"+encodeURIComponent(e)+"/actions/"+encodeURIComponent(t)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"domainsGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"domains",key:"domains",qs:{tag_name:e&amp;&amp;e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"domainsCreate",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"domains",method:"POST",body:{name:e,ip_address:t}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"domainsGet",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"domains/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"domainsDelete",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"domains/"+encodeURIComponent(e),method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"domainRecordsGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"domains/"+encodeURIComponent(e)+"/records",key:"domain_records",qs:{tag_name:t?t.tag_name||"":"",per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"domainRecordsCreate",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"domains/"+encodeURIComponent(e)+"/records",method:"POST",body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"domainRecordsGet",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"domains/"+encodeURIComponent(e)+"/records/"+encodeURIComponent(t)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"domainRecordsUpdate",value:<span class="fstat-no" title="function not covered" >function(e,t,n,a){<span class="cstat-no" title="statement not covered" ></span>var r={actionPath:"domains/"+encodeURIComponent(e)+"/records/"+encodeURIComponent(t),method:"PUT",body:n};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(r,a)}</span>},{key:"domainRecordsDelete",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"domains/"+encodeURIComponent(e)+"/records/"+encodeURIComponent(t),method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"regionsGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"regions",key:"regions",qs:{tag_name:e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"sizesGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"sizes",key:"sizes",qs:{tag_name:e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"imagesGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"images",key:"images",qs:{tag_name:e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1,"private":e["private"]||!1,type:e.type||null},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"imagesGetById",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"images/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"imagesGetBySlug",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"images/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"imagesGetActions",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"images/"+encodeURIComponent(e)+"/actions",key:"actions",qs:{tag_name:t?t.tag_name||"":"",per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"imagesUpdate",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"images/"+encodeURIComponent(e),body:{name:t},method:"PUT"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"imagesDelete",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"images/"+encodeURIComponent(e),method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"imagesRequestAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"images/"+encodeURIComponent(e)+"/actions",method:"POST",body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"imagesGetAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"images/"+encodeURIComponent(e)+"/actions/"+encodeURIComponent(t)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"floatingIpsGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"floating_ips",key:"floating_ips",qs:{tag_name:e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"floatingIpsAssignDroplet",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"floating_ips",method:"POST",body:{droplet_id:e}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"floatingIpsAssignRegion",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"floating_ips",method:"POST",body:{region:e}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"floatingIpsGet",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"floating_ips/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"floatingIpsDelete",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"floating_ips/"+encodeURIComponent(e),method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"floatingIpsRequestAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"floating_ips/"+encodeURIComponent(e)+"/actions",method:"POST",body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"floatingIpsGetActions",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"floating_ips/"+encodeURIComponent(e)+"/actions",key:"actions",qs:{tag_name:t?t.tag_name||"":"",per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"floatingIpsGetAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"floating_ips/"+encodeURIComponent(e)+"/actions/"+encodeURIComponent(t)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"tagsCreate",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"tags",method:"POST",body:{name:e}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"tagsDelete",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"tags/"+encodeURIComponent(e),method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"tagsGet",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"tags/"+encodeURIComponent(e)};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"tagsGetAll",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"tags",key:"tags",qs:{tag_name:e?e.tag_name||"":"",per_page:e?e.per_page||this.per_page:this.per_page,page:e?e.page||1:1},includeAll:e?e.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"tagsAddResources",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"tags/"+encodeURIComponent(e)+"/resources",method:"POST",body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"tagsDeleteResource",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"tags/"+encodeURIComponent(e)+"/resources",method:"DELETE",body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"tagsGetDroplets",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets",key:"droplets",qs:{per_page:t?t.per_page||this.per_page:this.per_page,page:t?t.page||1:1,tag_name:e},includeAll:t?t.includeAll||!1:!1};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"tagsDeleteDroplets",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"droplets",method:"DELETE",qs:{tag_name:e}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"tagsRequestAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"droplets/actions",method:"POST",qs:{tag_name:e},body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"volumes",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"volumes",method:"GET",qs:{region:e||""}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"volumesCreate",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"volumes",method:"POST",body:e};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"volumesGetById",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"volumes/"+e,method:"GET"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"volumesGetByName",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"volumes",method:"GET",qs:{name:e,region:t}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"volumesDeleteById",value:<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={actionPath:"volumes/"+e,method:"DELETE"};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(n,t)}</span>},{key:"volumesDeleteByName",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"volumes",method:"DELETE",qs:{name:e,region:t}};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>},{key:"volumesRequestAction",value:<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var a={actionPath:"volumes/"+encodeURIComponent(e)+"/actions",method:"POST",body:t};<span class="cstat-no" title="statement not covered" >r</span>eturn this.requestHelper.request(a,n)}</span>}]),e}();exports["default"]=DigitalOcean,module.exports=exports["default"];
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Fri Apr 21 2017 12:02:11 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
